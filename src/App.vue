@@ -18,16 +18,12 @@ export default {
   name:"App",
   data() {
     return {
-      provide: {
-          apiKey: this.publicEnvVar
-      }
+
     }
   }
 }
 </script>
-<script setup>
-const publicEnvVar = import.meta.env.VITE_APP_APIKEY ;
-</script>
+
 <style>
 
 </style>
