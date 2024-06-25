@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Movie Explorer</h1>
-    <nav>
+    <nav class="bg-slate-200 p-2 font-bold">
       <ul class="flex justify-around">
         <li><RouterLink to="/"> Home</RouterLink></li>
         <li><RouterLink to="/movies"> Movie List</RouterLink></li>
