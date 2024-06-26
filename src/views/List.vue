@@ -1,9 +1,9 @@
 <template>
-    <div class="flex gap-4">
+    <div class="flex gap-4 m-4">
         <h3> Search movies </h3>
-        <searchBar @searchStr="searchValue" />
+        <searchBar @searchStr="searchValue"/>
     </div>
-    <hr>
+    <hr class="m-4">
     <ul class=" flex flex-wrap gap-4 justify-center">
         <li v-for="item in content.results">
             <Card :item="item" v-if="item" />
@@ -87,12 +87,14 @@ export default {
                         Authorization: `Bearer ${this.apiKey}`
                     }
                 };
-                if (str != "") {
+                if (this.str != "") {
                     const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${this.str}&include_adult=false&language=en-US&page=${value}`, options);
+                    this.content = await response.json()
                 } else {
                     const response = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${value}`, options);
+                    this.content = await response.json()
                 }
-                this.content = await response.json()
+                
                 console.log('Success');
             } catch {
                 console.error('Failed');

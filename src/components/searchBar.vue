@@ -1,6 +1,6 @@
 <template>
     <div>
-       <input type="text" v-model="searchStr"> {{ searchStr }}
+       <input type="text" v-model="searchStr">
     </div>
 </template>
 <script>
