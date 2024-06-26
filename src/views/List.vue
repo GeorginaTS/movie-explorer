@@ -10,8 +10,9 @@
         </li>
     </ul>
     <br>
-    <div class="flex justify-between">
+    <div class="flex justify-between p-4">
         <button @click="previousPage" v-if="page > 1">previous</button>
+        <div v-else class="text-white"> previous</div>
         <p>Pages: {{ page }} / {{content.total_pages}}</p>
         <button @click="nextPage" v-if="page < content.total_pages"> next</button>
     </div>
@@ -60,7 +61,6 @@ export default {
         },
         async searchValue(str) {
             this.str = str
-            this.page = 1
             try {
                 const options = {
                     method: 'GET',
@@ -88,9 +88,9 @@ export default {
                     }
                 };
                 if (str != "") {
-                    const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${this.str}&include_adult=false&language=en-US&page=${this.page}`, options);
+                    const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${this.str}&include_adult=false&language=en-US&page=${value}`, options);
                 } else {
-                    const response = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${this.page}`, options);
+                    const response = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${value}`, options);
                 }
                 this.content = await response.json()
                 console.log('Success');
